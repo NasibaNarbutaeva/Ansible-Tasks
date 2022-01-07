@@ -1,0 +1,15 @@
+- hosts: all
+  tasks:
+
+  - name: Install ntpd
+    import_role:
+      name: ansible-ntp-role
+    when: ansible_os_family == "RedHat" 
+
+  - name: update hostname
+    import_role:
+      name: ansible-role-hostname
+    when: ansible_os_family == "Debian" 
+
+  - name: HOMEWORK is DONE
+    debug: msg="hi guys l have done third task !"
