@@ -1,0 +1,28 @@
+- name: Update cache
+  apt:
+   name: apache2
+   update_cache: yes 
+
+- name: Install apache
+  apt:
+   name: apache2
+   state: present
+
+- name: start apache
+  systemd: 
+   state: started
+   name: apache2
+
+- name: Install unzip
+  apt:
+   name: unzip
+   state: present 
+
+- name: Install web template
+  unarchive: 
+   src: https://www.free-css.com/assets/files/free-css-templates/download/page274/kloof.zip
+   dest: /tmp/
+   remote_src: yes
+
+- name: move files from /tmp to /var/www/html
+  shell: mv /tmp/* /var/www/html

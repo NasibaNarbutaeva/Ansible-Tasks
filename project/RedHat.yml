@@ -1,0 +1,25 @@
+
+  - name: Install httpd
+    yum:
+     name: httpd
+     state: latest
+
+  - name: start httpd
+    systemd:
+     state: started
+     name: httpd
+
+  - name: install unzip
+    yum:
+     name: unzip
+     state: latest
+
+  - name: download template
+    unarchive: 
+     src: https://www.free-css.com/assets/files/free-css-templates/download/page273/savory.zip
+     dest: /tmp/
+     remote_src: yes
+
+  - name: move savori from /tmp to /var
+    shell: mv /tmp/savory/* /var/www/html/
+  
