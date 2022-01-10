@@ -1,0 +1,5 @@
+[centos]
+web ansible_host=159.223.104.2
+
+[ubuntu]
+db ansible_host=159.223.145.8

@@ -1,0 +1,16 @@
+- name: install ntpd on maschines
+  yum:
+   name: ntp
+   state: present
+
+- name: start ntpd
+  systemd:
+   state: restarted
+   name: ntpd
+   enabled: yes
+
+- name: update ntpd configuration
+  lineinfile: 
+    path: /etc/ntp.conf
+    regexp: "^server 0.centos.pool.ntp.org iburst$"
+    line: "server ntpd.bosch.com iburst"

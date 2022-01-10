@@ -1,0 +1,4 @@
+- hosts: centos
+  tasks:
+  - name: Installation RedHat maschines
+    include_tasks: RedHat.yml 
