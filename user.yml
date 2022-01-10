@@ -1,0 +1,10 @@
+- name: add user
+  ansible.builtin.user: 
+   name: "{{ item }}"
+   state: present
+  with_items:
+  - sahin
+  - qudratillo
+  - shukrillo
+  - ilhom
+

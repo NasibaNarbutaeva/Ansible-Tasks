@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: add users
+    include_tasks: user.yml
+
+
+  - name: install and start virtual machines 
+    include_tasks: web.yml

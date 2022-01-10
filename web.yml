@@ -1,0 +1,31 @@
+- name: install httpd
+  when: ansible_os_family == "RedHat" 
+  yum: 
+   name: httpd
+   state: latest
+
+- name: start centos machines
+  when: ansible_os_family == "RedHat"
+  systemd:
+   state: started
+   name: httpd
+
+- name: start ubuntu machines
+  when: ansible_os_family == "Debian"
+  systemd: 
+   state: started
+   name: apache2
+
+
+- name: Update cache
+  when: ansible_os_family == "Debian"
+  apt:
+   name: apache2
+   update_cache: yes
+
+- name: install apache
+  when: ansible_os_family == "Debian"
+  apt:
+   name: apache2
+   state: latest
+
